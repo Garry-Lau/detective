@@ -4,3 +4,7 @@ data/*.db
 .shots/
 __pycache__/
 *.pyc
+
+# 本地提交材料，不上传仓库
+workbuddy.md
+扫码测试.png
