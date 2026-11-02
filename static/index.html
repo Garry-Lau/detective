@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>一键查真伪 · 查得到，信得过</title>
+<meta name="description" content="用元宝搜索做的查证工具：先查、给证据、查不到就说不知道。" />
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="mark">侦</span><span>一键查真伪</span></div>
+  <div class="pill" id="statusPill">连接中…</div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <h1 class="serif">先查，再说。</h1>
+    <p>把一句拿不准的话丢进来。它去查、把证据摊开、告诉你它信谁 —— 查不到，它会直接说「没查到可靠来源」，而不是编一个。</p>
+  </section>
+
+  <section class="panel">
+    <h2>交来一个疑点 <span class="tag">文字 / 群聊截图</span></h2>
+    <div class="ask-box">
+      <textarea id="claim" placeholder="例：隔夜水、千滚水会致癌吗？"></textarea>
+      <div class="row">
+        <button class="primary" id="btnVerify">开始查证</button>
+        <button class="ghost" id="btnFind">找东西 / 查模糊</button>
+        <button class="ghost" id="btnLatest">查最新</button>
+        <button class="ghost" id="btnShot">上传群聊截图</button>
+        <input type="file" id="fileInput" accept="image/*" hidden />
+      </div>
+    </div>
+    <div class="hintline">
+      至少 1 条官方来源、或 2 个独立权威媒体互证，才会写「真 / 假」；不够就写「说不准」。每条证据都能点回原文核对。
+    </div>
+  </section>
+
+  <section id="result"></section>
+
+  <section class="panel">
+    <h2>持续盯梢 <span class="tag">有变化就提醒</span></h2>
+    <div class="row" style="margin-top:0">
+      <input id="watchInput" placeholder="要盯的那句话，例：广州台风停课通知" style="flex:1;min-width:180px;padding:10px 12px;border:1px solid var(--line);border-radius:8px;font-size:14px;font-family:inherit;background:#fffef9;" />
+      <button class="primary" id="btnWatch">开始盯梢</button>
+      <button class="ghost" id="btnCheckAll">全部检查一次</button>
+    </div>
+    <div class="hintline">打开页面会自动检查一次；<b>有变化</b>的会标红。第一次检查只建立基线，第二次起才会判断「变了没」。</div>
+    <div id="watchList" style="margin-top:14px"></div>
+  </section>
+
+  <section class="panel">
+    <h2>现场使用数据 <span class="tag">有没有人真在用</span></h2>
+    <div class="stats" id="stats">
+      <div class="stat"><div class="n" id="stTotal">–</div><div class="l">累计查证</div></div>
+      <div class="stat"><div class="n" id="stToday">–</div><div class="l">今日</div></div>
+      <div class="stat"><div class="n" id="stSessions">–</div><div class="l">参与者</div></div>
+      <div class="stat"><div class="n" id="stWatches">–</div><div class="l">盯梢中</div></div>
+    </div>
+    <div class="feed" id="feed"></div>
+  </section>
+
+  <footer>
+    检索由 <b>元宝搜索 SearchPro</b> 提供 · 每条结论只引用检索到的公开来源 · 不做时政话题，不查个人私事
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+<script src="/static/app.js"></script>
+</body>
+</html>

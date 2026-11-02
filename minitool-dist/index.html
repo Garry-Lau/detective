@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+<title>一键查真伪</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "PingFang SC", "Hiragino GB", "Microsoft YaHei", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+</style>
+<link rel="stylesheet" href="./assets/style.css" />
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand"><span class="mark">侦</span><span>一键查真伪</span></div>
+  <div class="pill warn" id="statusPill">离线演示模式</div>
+</div>
+
+<div class="wrap">
+
+  <section class="hero">
+    <h1 class="serif">先查，再说。</h1>
+    <p>把一句拿不准的话丢进来。它去查、把证据摊开、告诉你它信谁 —— 查不到，它会直接说「没查到可靠来源」，而不是编一个。</p>
+  </section>
+
+  <section class="panel">
+    <h2>交来一个疑点 <span class="tag">离线演示 · 内置真实查证样例</span></h2>
+    <div class="ask-box">
+      <textarea id="claim" placeholder="例：隔夜水、千滚水会致癌吗？"></textarea>
+      <div class="row">
+        <button class="primary" id="btnVerify">开始查证</button>
+        <button class="ghost" id="btnShot">传群聊截图</button>
+        <input type="file" id="fileInput" accept="image/*" hidden />
+      </div>
+    </div>
+    <div class="hintline">
+      演示包内置了几条真实查证结果（地震核实、饮水谣言等），按关键词命中演示。至少 1 条官方来源、或 2 个独立权威媒体互证，才会写「真 / 假」；不够就写「说不准」。完整联网版请访问在线服务。
+    </div>
+  </section>
+
+  <section id="result"></section>
+
+  <section class="panel">
+    <h2>持续盯梢 <span class="tag">本机演示</span></h2>
+    <div class="row row-watch">
+      <input id="watchInput" placeholder="要盯的那句话，例：广州台风停课通知" />
+      <button class="primary" id="btnWatch">开始盯梢</button>
+      <button class="ghost" id="btnCheckAll">全部检查一次</button>
+    </div>
+    <div class="hintline">演示版在本机模拟盯梢流程：第一次检查建立基线，第二次起判断「变了没」，有变化的标红。</div>
+    <div id="watchList" style="margin-top:14px"></div>
+  </section>
+
+  <section class="panel">
+    <h2>本机使用数据 <span class="tag">仅记录在本设备</span></h2>
+    <div class="stats" id="stats">
+      <div class="stat"><div class="n" id="stTotal">0</div><div class="l">累计查证</div></div>
+      <div class="stat"><div class="n" id="stToday">0</div><div class="l">今日</div></div>
+      <div class="stat"><div class="n" id="stSessions">1</div><div class="l">参与者</div></div>
+      <div class="stat"><div class="n" id="stWatches">0</div><div class="l">盯梢中</div></div>
+    </div>
+    <div class="feed" id="feed"></div>
+  </section>
+
+  <footer>
+    离线演示包 · 完整版由元宝搜索 SearchPro 提供检索 · 每条结论只引用检索到的公开来源 · 不做时政话题，不查个人私事
+  </footer>
+</div>
+
+<div class="toast" id="toast"></div>
+<div class="modal-mask" id="copyModal">
+  <div class="modal">
+    <div class="modal-title">结论文本 · 长按或全选复制</div>
+    <textarea id="copyText" readonly></textarea>
+    <div class="row"><button class="primary" id="btnCopyClose">完成</button></div>
+  </div>
+</div>
+
+<script src="./assets/data.js"></script>
+<script src="./assets/app.js"></script>
+</body>
+</html>

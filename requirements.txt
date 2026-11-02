@@ -1,0 +1,8 @@
+fastapi>=0.110
+uvicorn>=0.27
+requests>=2.31
+python-multipart>=0.0.9
+pillow>=10.1
+
+# 可选：装了就自动走腾讯云官方 SDK（不装也能跑，内置 TC3 签名直连）
+# tencentcloud-sdk-python>=3.0.1200
